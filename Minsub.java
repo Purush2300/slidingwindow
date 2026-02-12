@@ -1,31 +1,30 @@
 public class Minsub {
-
-    static int minim(int[]y,int x){
-        int sum=0;
-        int l =0;
-        
-        int lenght1=0;
-       
-        for (int r = 0; r < y.length; r++) {
-
-            
-            sum+=y[r];
-            
-            if (sum>=x) {
-                lenght1= r+1;
-                // lenght1=Math.max(lenght1, currentlen);
-                // sum=sum-y[l];
-               
+    static int longest(int[]a,int target){
+        int l=0;
+        int r=0;
+        int windowsum=0;
+        int maxlen=Integer.MAX_VALUE;
+        while (r<a.length) {
+            windowsum+=a[r];
+            while (windowsum>=target) {
+                 maxlen=Math.min(maxlen,r-l+1);
+                windowsum-=a[l];
+                l++;
+                
             }
+           
+            r++;
             
         }
-        return lenght1;
-        }
-    
-    public static void main(String[] args) {
-        int[]a={2,4,6,8,9,1,2,5,4,3,2,7,8,9,1,3,2,5,7,8};
-        int k=7;
-       int w= minim(a,k);
-       System.out.println(w);
-    }}
+        return maxlen;
+    }
+public static void main(String[] args) {
+    int []a={2,3,1,2,4,3};
+    int target=7;
+   int res= longest(a,target);
+   System.out.println(res);
+}
+   
+       
+    }
 
