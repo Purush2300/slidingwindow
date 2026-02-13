@@ -1,7 +1,8 @@
 public class Greek {
-    static int maxi(int[] n,int k){
+    static void maxi(int[] n,int k){
         int sum=0;
         int msumm=0;
+        int stend=0;
 
         for (int i = 0; i <k; i++) {
             sum+=n[i];
@@ -10,14 +11,21 @@ public class Greek {
         msumm=sum;
         for (int i = k; i < n.length; i++) {
             sum=sum-n[i-k]+n[i];
-            msumm=Math.max(msumm, sum);
-        }
-        return msumm;
+            if (sum>msumm) {
+                msumm=sum;
+                 stend=i-k+1;
+                
+            }}
+            for (int j = stend; j < stend+k; j++) {
+                System.out.print(n[j]+" ");
+            }
+        
+        
     }
     public static void main(String[] args) {
         int []a={100,200,300,400};
         int k=2;
-        int re=maxi(a,k);
-        System.out.println(re);
+        maxi(a,k);
+        
     }
 }
